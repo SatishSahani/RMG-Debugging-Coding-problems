@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<style>
+          .container2 { 
+            padding-top: 10px;
+        height: 400px; 
+        width: 300px; 
+        background: #dde1e7; 
+        text-align: center;
+        border-radius: 6px; 
+        box-shadow: -3px -3px 7px #ffffffb2,  
+         3px 3px 5px rgba(94, 104, 121, 0.945); 
+      } 
+</style>
+
+<body>
+    <div class="container2">
+        <h1>Update Book</h1>
+        <form action="{% url 'uprec' mem.id %}" method="post">
+            {% csrf_token %}
+            <label for="">Book name</label><br><br>
+            <input type="text" name="BookName" value="{{mem.BookName}}" required><br><br>
+            <label for="">Author name</label><br><br>
+            <input type="text" name="AuthorName" value="{{mem.AuthorName}}" required><br><br>
+            <label for="">Cost</label><br><br>
+            <input type="number" min="1" name="Price" value="{{mem.Price}}" required><br><br>
+            <button type="submit" id="new1">Update</button>
+        </form>
+
+    </div>
+</body>
+
+</html>

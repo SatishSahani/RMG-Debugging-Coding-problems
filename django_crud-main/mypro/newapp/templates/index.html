@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+{% load static %}
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<script src='https://kit.fontawesome.com/a076d05399.js' crossorigin='anonymous'></script>
+<style>
+    h1 {
+      text-align: center;
+    }
+          .container { 
+            padding-top: 20px;
+        height: 400px; 
+        width: 600px; 
+        background: #dde1e7; 
+        text-align: center;
+        border-radius: 6px; 
+        box-shadow: -3px -3px 7px #ffffffb2,  
+         3px 3px 5px rgba(94, 104, 121, 0.945); 
+      } 
+  </style>
+<body>
+    <div class="container">
+        <h1>Here Is The Books List!</h1>
+        <table id="customers" border="1">
+            <thead>
+                <th>Id</th>
+                <th>Book Name</th>
+                <th>Author Name</th>
+                <th>Price</th>
+                <th colspan="2" id="mid">Action</th>
+            </thead>
+            {% for x in mem %}
+            <tr>
+                <td>{{x.id}}</td>
+                <td>{{x.BookName}}</td>
+                <td>{{x.AuthorName}}</td>
+                <td>{{x.Price}}</td>
+                <td>
+                    <a href="update/{{x.id}}"><button id="up">Edit</button></a>
+                </td>
+                <td>
+                    <a href="delete/{{x.id}}"><button id="del">Delete</button></a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <br><br>
+        <a href="{% url 'add' %}"><button id="new3">Add Book</button></a>
+    </div>
+</body>
+
+</html>
